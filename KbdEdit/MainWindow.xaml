@@ -1,0 +1,48 @@
+﻿<Window x:Class="KbdEdit.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KbdEdit"
+        mc:Ignorable="d"
+        Title="Keyboard Editor" Height="350" Width="800">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" BorderThickness="0,0,0,1">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open"/>
+                <MenuItem Header="_Close"/>
+                <MenuItem Header="_Save"/>
+            </MenuItem>
+        </Menu>
+        <Grid Name="grdLayout" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="4" />
+                <ColumnDefinition Width="*" MinWidth="120" />
+            </Grid.ColumnDefinitions>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <Frame Name="frmMain" ScrollViewer.CanContentScroll="True" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
+            </ScrollViewer>
+            
+            <GridSplitter Grid.Column="1" Width="4" HorizontalAlignment="Stretch" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+            <Border Grid.Column="2">
+                <Grid Margin="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="64" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="40" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock VerticalAlignment="Center">Default</TextBlock>
+                    <TextBox Grid.Column="1" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="24" Name="txtKeyDefault" />
+
+                    <TextBlock Grid.Row="1" VerticalAlignment="Center">Shifted</TextBlock>
+                    <TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="24" Name="txtKeyShifted" />
+                </Grid>
+            </Border>
+        </Grid>
+    </DockPanel>
+</Window>
